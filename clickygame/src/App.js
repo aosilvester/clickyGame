@@ -1,75 +1,108 @@
-import React, { Component } from "react";
-import FriendCard from "./components/FriendCard";
-import Wrapper from "./components/Wrapper";
-import Title from "./components/Title";
-import friends from "./friends.json";
+import React, { Component } from 'react';
+import characters from './trek.json';
+import Wrapper from './components/Wrapper/Wrapper';
+import TrekCard from './components/TrekCard/TrekCard';
+import { Jumbotron , Button } from 'reactstrap';
+import './App.css';
 
 class App extends Component {
-  // Setting this.state.friends to the friends json array
   state = {
-    friends,
-    currentScore: "",
-    topScore: ""
-
+    currentScore: 0,
+    topScore: 0,
+    message: "Click a Star Trek character to begin.",
+    characters: characters,
+    unselectedCharacters: characters
   };
 
-  clickFriend = (id) => {
-    console.log("clickFriend activated");
-    console.log(id)
-
-    // set it so that the specific friend clicked is set to (friend.clicked === true)
-    // friend.clicked === true;  
- 
-    // console.log(friend)
-    // Filter this.state.friends for friends with an id not equal to the id being clickd
-    const friendClicked = this.state.friends.filter(friend => friend.id === id);
-    // Set this.state.friends equal to the new friends array
-    console.log(friendClicked);
-
-    // console.log(friends.id)
-    friendClicked.clicked = true
-
-    this.setState({ friends });
-
-    // set friend.clicked = "true"
-    // this.setState({clicked = true})
-
+  //Shuffle Array function
+  shuffleArray = array => {
+      for (let i = array.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          let temp = array[i];
+          array[i] = array[j];
+          array[j] = temp;
+      };
   };
 
-  shuffleData = friends => {
-    let i = friends.length - 1;
-    while (i > 0) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = friends[i];
-      friends[i] = friends[j];
-      friends[j] = temp;
-      i--;
+  //Function to reset State to initial state on click
+  handleButtonClick = event => {
+      event.preventDefault();
+      this.setState({
+        currentScore: 0,
+        topScore: 0,
+        message: "Click a Star Trek character to begin.",
+        allCharacters: characters,
+        unselectedCharacters: characters
+      });
+  };
+
+  //selectCharacter is called by onClick event in MarioCard.js
+  //and receives character parameter
+  selectCharacter = selectCharName => {
+    //Using array.find function to find the first element in unselectedCharacters array that sattisfies the condition
+    //if no character matched then findCharacter will equals to undefined
+    const findCharacter = this.state.unselectedCharacters.find(char => char.charName === selectCharName);
+
+    //If no character found in the unselectedCharacters array
+    //Then setState for State properties: topScore will be replaced with currentScore if currentScore is higher than topScore
+    //and start new game
+    if (findCharacter === undefined) {
+        this.setState({
+            message: "You guessed incorrectly!",
+            topScore: (this.state.currentScore > this.state.topScore) ? this.state.currentScore : this.state.topScore,
+            currentScore: 0,
+            allCharacters: characters,
+            unselectedCharacters: characters
+        });
     }
-    return friends;
-  };
+    //If character is found in the unselectedCharacters array
+    //Then use array.filter to create a new array (newunselectedCharacters)
+    else {
+        const newUnselectedCharacters = this.state.unselectedCharacters.filter(char => char.charName !== selectCharName);
 
+        this.setState({
+            message: "You guessed correctly!",
+            currentScore: this.state.currentScore + 1,
+            allCharacters: characters,
+            unselectedCharacters: newUnselectedCharacters
+        });
+    };//End else
 
+    //Invoke shuffleArray to shuffle images array
+    this.shuffleArray(characters);
+  };//End if
 
-  // Map over this.state.friends and render a FriendCard component for each friend object
   render() {
     return (
-      <Wrapper>
-        <Title>Friends List</Title>
-        {this.state.friends.map(friend => (
-          <FriendCard
-            clickFriend={this.clickFriend}
-            id={friend.id}
-            key={friend.id}
-            name={friend.name}
-            image={friend.image}
-            clicked={friend.clicked ? "true" : "false"}
-            occupation={friend.occupation}
-            location={friend.location}
-          />
-        ))}
+      <div>           
+        <div className="App">
+            <Jumbotron>
+                <h2 className="App-title">Star Trek Memory Challenge Game</h2>
+                <p className="message">--------------------------------------</p>
+                <p className="message">{this.state.message}</p>
+                <p className="message">Current Score: {this.state.currentScore}</p>
+                <p className="message">Top Score: {this.state.topScore}</p>
+                <Button color="danger" onClick={this.handleButtonClick}>Start Over </Button>
+            </Jumbotron>
+        </div>
+        <Wrapper>
+            {
+              //map function iterates thru characters array and displays individual image
+              //and pass to MarioCard with key, character, charImage, currentScore and function selectCharacter 
+              this.state.characters.map(character => (
+                  <TrekCard 
+                      key={character.id}
+                      charName = {character.charName}
+                      image = {character.image}
+                      currentScore = {this.state.currentScore}
+                      selectCharacter = {this.selectCharacter}
+                  />
+              ))
+            }
       </Wrapper>
+      </div>
     );
-  }
-}
+  };
+};
 
 export default App;

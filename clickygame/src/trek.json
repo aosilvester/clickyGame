@@ -1,0 +1,63 @@
+[
+    {
+        "id": 1,
+        "charname": "picard",
+        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/2/20/Captain_Picard_Chair.jpg/220px-Captain_Picard_Chair.jpg"
+    },
+    {
+        "id": 2,
+        "charname": "worf",
+        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/e/ed/WorfTNG.jpg/220px-WorfTNG.jpg"
+    },    
+    {
+        "id": 3,
+        "charname": "riker",
+        "image": "https://vignette.wikia.nocookie.net/p__/images/3/3b/CommanderRiker.jpg/revision/latest?cb=20160124005107&path-prefix=protagonist"
+    },    
+    {
+        "id": 4,
+        "charname": "data",
+        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/0/09/DataTNG.jpg/220px-DataTNG.jpg"
+    },    
+    {
+        "id": 5,
+        "charname": "geordi",
+        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/GeordiLaForge.jpg/220px-GeordiLaForge.jpg"
+    },    
+    {
+        "id": 6,
+        "charname": "kirk",
+        "image": "https://vignette.wikia.nocookie.net/memoryalpha/images/c/c4/James_Kirk%2C_2265.jpg/revision/latest/scale-to-width-down/350?cb=20110417043648&path-prefix=en"
+    },    
+    {
+        "id": 7,
+        "charname": "spock",
+        "image": "http://www.startrek.com/uploads/assets/db_articles/6ee08d45f7a94d4c6fda9ee84833054a687ddf77.jpg"
+    },
+    {
+        "id": 8,
+        "charname": "bones",
+        "image": "http://www.startrek.com/uploads/assets/db_articles/4a69dc066ecadefa4fa65c2ed38a55329aa4b104.jpg"
+    },
+    {
+        "id": 9,
+        "charname": "scotty",
+        "image": "http://www.startrek.com/uploads/assets/db_articles/507ee4c3161907baabb77c99d5e1105f22ef621c.jpg"
+    },
+    {
+        "id": 10,
+        "charname": "janeway",
+        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3c/Janeway_Season7.jpg/220px-Janeway_Season7.jpg"
+    },
+    {
+        "id": 11,
+        "charname": "sisko",
+        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/9/92/BenSisko.jpg/220px-BenSisko.jpg"
+    },
+    {
+        "id": 12,
+        "charname": "dax",
+        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6c/JadziaDax.jpg/250px-JadziaDax.jpg"
+    }
+
+]

@@ -1,0 +1,26 @@
+.App {
+    text-align: center;
+  }
+  
+  .App-header {
+    width: 100%;
+    overflow: hidden;
+    color: white;
+  }
+  
+  .App-title {
+    /* font-size: 30pt; */
+    /* font-family: 'Press Start 2P', cursive; */
+    color: black;
+  }
+  
+  .message {
+    font-size: 10pt;
+    /* font-family: 'Press Start 2P', cursive; */
+    color: black;
+  }
+  
+  /* .Jumbotron {
+    height: 250px;
+  } */
+  
